@@ -25,9 +25,10 @@ const ReadList = ({ book }) => {
                         }
                     </p>
                     <p>Publishing Data : {yearOfPublishing}</p>
-                    <div className='flex items-center justify-normal'>
-                        <p className='font-medium'><span className='font-bold'>Page</span> : {totalPages}</p>
+                    <div className='flex items-center gap-6'>
+                        <span className='font-medium'><span className='font-bold'>Page</span> : {totalPages}</span>
                         <span className='btn btn-error w-20'>{rating}</span>
+                        <button className='btn btn-success rounded-xl text-white'>View Details</button>
                     </div>
                 </div>
             </div>
