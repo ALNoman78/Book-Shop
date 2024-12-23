@@ -4,7 +4,7 @@ import bannerImage from '../../assets/Book 1.png'
 
 const Banner = props => {
     return (
-        <div className="hero min-h-screen">
+        <div className="hero bg-[rgba(19,19,19,0.05)] md:p-20 p-12 rounded-xl mt-8">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img
                     src={bannerImage}
