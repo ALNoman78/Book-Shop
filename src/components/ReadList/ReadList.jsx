@@ -6,13 +6,13 @@ const ReadList = ({ book }) => {
     const { bookName, author, image, review, totalPage, rating, category, publisher, yearOfPublishing, tags, totalPages } = book
 
     return (
-        <div className='m-5'>
-            <div className="card bg-base-100  shadow-xl flex-row gap-6">
-                <figure className="px-10 pt-10 md:w-[250px] w-full m-5 bg-base-200 ">
-                    <img
+        <div className='md:m-5 '>
+            <div className="card bg-base-100  shadow-xl md:flex-row flex-col gap-6">
+                <figure className="md:p-10 md:w-[250px] h-auto w-10/12 mx-auto md:m-5 p-5 bg-base-200 ">
+                    <img 
                         src={image}
                         alt="Shoes"
-                        className="rounded-xl" />
+                        className="rounded-xl w-44" />
                 </figure>
                 <div className="card-body">
                     <h2 className='text-4xl font-bold'>{bookName}</h2>
@@ -24,7 +24,7 @@ const ReadList = ({ book }) => {
                             </span>)
                         }
                     </p>
-                    <p>Publishing Data : {yearOfPublishing}</p>
+                    <p className='font-medium text-[15px]'>Publishing Data : {yearOfPublishing}</p>
                     <div className='flex items-center gap-6'>
                         <span className='font-medium'><span className='font-bold'>Page</span> : {totalPages}</span>
                         <span className='btn btn-error w-20'>{rating}</span>

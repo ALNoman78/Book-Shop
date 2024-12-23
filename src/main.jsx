@@ -8,6 +8,7 @@ import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
 import BookDetails from './components/BookDetail/BookDetails';
 import ListedBooks from './components/ListedBooks/ListedBooks';
+import WishList from './components/WishlistBook/WishList';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
         loader : () => fetch('/booksData.json'), // worst way to load some data
         element : <BookDetails></BookDetails>
       },
+      {
+        path : '/listBooks',
+        loader : () => fetch('/booksData.json'),
+        element : <WishList></WishList>
+      }
+      ,
       {
         path : '/dashboard',
         element : <Dashboard></Dashboard>,
