@@ -8,7 +8,7 @@ const Book = ({ data }) => {
     return (
         <Link to={`/books/${bookId}`}>
             <div className='p-3 md:p-0'>
-                <div className="card shadow-xl border-emerald-500 border p-6">
+                <div className="card shadow-xl border-emerald-500 border">
                     <figure className='bg-[#F3F3F3] w-full p-6 border border-base-200 h-[230px] object-cover'>
                         <img className='w-[150px] p-8'
                             src={image}
