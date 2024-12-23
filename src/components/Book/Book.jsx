@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Book = props => {
-  return (
-    <div>Book</div>
-  )
+const Book = ({data}) => {
+    console.log(data);
+    return (
+        <div>Book</div>
+    )
 }
 
 Book.propTypes = {}
