@@ -7,15 +7,17 @@ const Books = () => {
 
     useEffect(() => {
         fetch('./booksData.json')
-        .then(res => res.json())
-        .then(data => setBooks(data))
+            .then(res => res.json())
+            .then(data => setBooks(data))
     }, [])
     return (
         <div>
             <h2 className='text-4xl font-bold text-center my-8'>Books : {books.length}</h2>
-            {
-                books.map((book , idx) => <Book key={idx} data={book}></Book>)
-            }
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                {
+                    books.map((book, idx) => <Book key={idx} data={book}></Book>)
+                }
+            </div>
         </div>
     )
 }
