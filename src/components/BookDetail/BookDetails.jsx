@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
+import { addToStoredReadList, addToStoredWishlist } from '../utility/addToDB'
 
 const BookDetails = () => {
     const { bookId } = useParams()
@@ -15,6 +16,21 @@ const BookDetails = () => {
 
     const { bookName, author, image, review, totalPage, rating, category, publisher, yearOfPublishing, tags, totalPages } = book
     // console.log(book);
+
+    const handleMarkAsRead = (id) => {
+        /**
+         * 1. Understand what to store or save => bookId
+         * 2. Where to store => database
+         * 3. Array , List , Condition : 
+         * 4. check if the  book is already in the read list .
+         * 5. if not then added the book list.
+         * 6.if yes, don't added the read book list.
+         */
+        addToStoredReadList(id)
+    }
+    const handleAddToWishList = (id) => {
+        addToStoredWishlist(id)
+    }
     return (
         <div className="flex w-full flex-col lg:flex-row my-8">
             <div className="card bg-base-300 rounded-box grid flex-grow place-items-center">
@@ -44,8 +60,8 @@ const BookDetails = () => {
                     <p className='text-[rgba(19,19,19,0.70)] mb-4 font-medium'> <span className='font-bold ml-4'>Rating : </span>{rating}</p>
                 </div>
                 <div>
-                    <button className='btn btn-outline mr-5'>Read</button>
-                    <button className='btn btn-accent text-white'>Wishlist</button>
+                    <button onClick={() => handleMarkAsRead(bookId)} className='btn btn-outline mr-5'>Mark as Read</button>
+                    <button onClick={() => handleAddToWishList(bookId)} className='btn btn-accent text-white'>Add to Wishlist</button>
                     <button onClick={handleNavigate} className='btn btn-error text-white ml-4'>Back</button>
                 </div>
             </div>

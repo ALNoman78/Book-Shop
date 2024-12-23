@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
 const Book = ({ data }) => {
-    const { bookId, bookName, author, image, review, totalPage, rating, category, publisher, yearOfPublishing, tags } = data
+    const { bookId, bookName, author, image, category,  tags } = data
     // console.log(data);
     return (
         <Link to={`/books/${bookId}`}>
-            <div className='p-3 md:p-0'>
-                <div className="card shadow-xl border-emerald-500 border">
-                    <figure className='bg-[#F3F3F3] w-full p-6 border border-base-200 h-[230px] object-cover'>
+            <div className='p-3 md:p-0 '>
+                <div className="card shadow-xl border-emerald-500 border ">
+                    <figure className='bg-[#F3F3F3]  m-6 border border-base-200 h-[230px] object-cover'>
                         <img className='w-[150px] p-8'
                             src={image}
                             alt="Shoes" />
