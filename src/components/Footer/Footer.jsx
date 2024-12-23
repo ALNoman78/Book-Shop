@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Footer = props => {
     return (
-        <footer className="footer bg-neutral text-neutral-content p-10">
+        <footer className="footer bg-neutral text-neutral-content p-10 md:grid-cols-3 grid-cols-2 ">
             <nav>
                 <h6 className="footer-title">Services</h6>
                 <a className="link link-hover">Branding</a>
