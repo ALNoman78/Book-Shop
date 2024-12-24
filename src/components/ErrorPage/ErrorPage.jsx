@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 const ErrorPage = props => {
     return (
-        <div>
-            <h2 className='text-5xl text-center'>ErrorPage</h2>
-            <p>Status 404</p>
+        <div className='flex flex-col justify-center items-center gap-5 place-items-center my-12 md:my-32'>
+            <h2 className='text-5xl italic text-center'>ErrorPage</h2>
+            <p className='text-center font-bold text-3xl'>Status 404</p>
         </div>
     )
 }

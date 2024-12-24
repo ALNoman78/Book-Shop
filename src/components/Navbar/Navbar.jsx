@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
-    const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/listedBooks'>Listed Book</NavLink></li>
-        <li><NavLink to='/readPage'>Page to Read</NavLink></li>
-    </>
+    const links =
+        <>
+            <li><NavLink to='/'>Home</NavLink></li>
+            <li><NavLink to='/listedBooks'>Listed Book</NavLink></li>
+            <li><NavLink to='/readPage'>Page to Read</NavLink></li>
+        </>
     return (
         <div className="navbar bg-base-100 ">
             <div className="navbar-start">
@@ -29,7 +30,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            {/* Dynamic value / list items */}
+                        {/* Dynamic value / list items */}
                         {links}
                     </ul>
                 </div>
