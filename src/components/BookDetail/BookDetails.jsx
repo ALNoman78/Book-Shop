@@ -26,6 +26,7 @@ const BookDetails = () => {
          * 5. if not then added the book list.
          * 6.if yes, don't added the read book list.
          */
+        
         addToStoredReadList(id)
     }
     const handleAddToWishList = (id) => {

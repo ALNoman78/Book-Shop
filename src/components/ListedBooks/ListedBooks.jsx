@@ -23,7 +23,7 @@ const ListedBooks = () => {
         const wishListBook = allWishListBook.filter((book, idx) => storedListInt.includes(book.bookId))
         setWishList(wishListBook)
     }, [])
-    console.log(allWishListBook);
+    // console.log(allWishListBook);
 
     // read list book
 
@@ -37,13 +37,14 @@ const ListedBooks = () => {
         setReadBook(readBookList)
 
     }, [])
+    
     return (
         <div>
             <h3 className='md:text-4xl font-bold text-center bg-base-200 rounded-xl p-5 my-8'>Books</h3>
             <Tabs>
                 <TabList>
-                    <Tab>Read Books</Tab>
-                    <Tab>Wishlist Books</Tab>
+                    <Tab>Read Books : {read.length}</Tab>
+                    <Tab>Wishlist Books : {wishlist.length}</Tab>
                 </TabList>
 
                 <TabPanel>
