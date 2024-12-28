@@ -12,11 +12,8 @@ const ListedBooks = () => {
     const [read, setReadBook] = useState([])
 
     // Data sort 
-
     const [sort, setSort] = useState('')
-
     // wishlist book 
-
     const allWishListBook = useLoaderData()
     const [wishlist, setWishList] = useState([])
 
@@ -43,6 +40,13 @@ const ListedBooks = () => {
     // data sort handle
     const handleSort = sortType => {
         setSort(sortType)
+
+        // const sortReadList = [...read].sort
+
+        if (sortType === 'Number of Pages') {
+            const sortedReadList = [...read].sort((a , b) => a.totalPages - b.totalPages)
+            setReadBook(sortedReadList)
+        }
     }
 
     return (
