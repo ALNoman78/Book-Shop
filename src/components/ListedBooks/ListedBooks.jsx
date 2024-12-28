@@ -11,6 +11,10 @@ const ListedBooks = () => {
     const allBooks = useLoaderData()
     const [read, setReadBook] = useState([])
 
+    // Data sort 
+
+    const [sort, setSort] = useState('')
+
     // wishlist book 
 
     const allWishListBook = useLoaderData()
@@ -30,17 +34,31 @@ const ListedBooks = () => {
     useEffect(() => {
         const storedReadList = getStoredReadList();
         const storedReadListInt = storedReadList.map((id) => parseInt(id))
-
         // worst way to code this
         const readBookList = allBooks.filter((book, idx) => storedReadListInt.includes(book.bookId))
-
         setReadBook(readBookList)
 
     }, [])
-    
+
+    // data sort handle
+    const handleSort = sortType => {
+        setSort(sortType)
+    }
+
     return (
         <div>
             <h3 className='md:text-4xl font-bold text-center bg-base-200 rounded-xl p-5 my-8'>Books</h3>
+            <div className="dropdown flex items-center justify-center my-6">
+                <div tabIndex={0} role="button" className="btn m-1">
+                    {
+                        sort ? `Sort By : ${ sort } ` : 'Sort By '
+                    }
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 mt-[10rem] shadow">
+                    <li onClick={() => handleSort('Ratings')}><a>Ratings</a></li>
+                    <li onClick={() => handleSort('Number of Pages')}><a>Number of Pages</a></li>
+                </ul>
+            </div>
             <Tabs>
                 <TabList>
                     <Tab>Read Books : {read.length}</Tab>
@@ -59,7 +77,7 @@ const ListedBooks = () => {
                     <h2 className='font-medium text-center my-5'>Wishlist Book : {wishlist.length}</h2>
                     <div>
                         {
-                            wishlist.map((book , idx) => <ReadList book={book} key={idx}></ReadList>)
+                            wishlist.map((book, idx) => <ReadList book={book} key={idx}></ReadList>)
                         }
                     </div>
                 </TabPanel>
