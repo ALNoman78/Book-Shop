@@ -14,7 +14,7 @@ const BookDetails = () => {
     }
     const book = data.find((bookDel) => bookDel.bookId === id);
 
-    const { bookName, author, image, review, totalPage, rating, category, publisher, yearOfPublishing, tags, totalPages } = book
+    const { bookName, author, image, review,  rating, category, publisher, yearOfPublishing, tags, totalPages } = book
     // console.log(book);
 
     const handleMarkAsRead = (id) => {

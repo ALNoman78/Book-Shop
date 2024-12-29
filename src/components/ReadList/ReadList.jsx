@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
 const ReadList = ({ book }) => {
+    const navigate = useNavigate()
+
+    const handleDetails = () => {
+        navigate('/books/:bookId')
+    }
 
     const { bookName, author, image, review, totalPage, rating, category, publisher, yearOfPublishing, tags, totalPages } = book
 
@@ -28,7 +34,7 @@ const ReadList = ({ book }) => {
                     <div className='flex items-center gap-6'>
                         <span className='font-medium'><span className='font-bold'>Page</span> : {totalPages}</span>
                         <span className='btn btn-error w-20'>{rating}</span>
-                        <button className='btn btn-success rounded-xl text-white'>View Details</button>
+                        <button onClick={handleDetails} className='btn btn-success rounded-xl text-white'>View Details</button>
                     </div>
                 </div>
             </div>
