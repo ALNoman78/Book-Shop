@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import auth from '../../Firebase/firebase.init'
 
 const Navbar = () => {
+    const [user, setUser] = useState(null)
+
+    const provider = new GoogleAuthProvider()
+
+    const handleGoogleAuth = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                setUser(result.user)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                setUser(null)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     const links =
         <>
             <li><NavLink to='/'>Home</NavLink></li>
@@ -42,8 +68,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end ">
-                <a className="btn btn-success mr-4 text-white">Sign In</a>
-                <a className="btn btn-accent text-white">Sign up</a>
+                {
+                    user &&
+                    <div className='flex items-center gap-5'>
+                        <img className='rounded-full h-14' src={user.photoURL} alt="" />
+                        <div>
+                            <h3>{user.displayName}</h3>
+                            <p>{user.email}</p>
+                        </div>
+                    </div>
+                }
+                {
+                    user ?
+                        <a onClick={handleSignOut} className="btn btn-accent text-white">Sign Out</a> :
+                        <a onClick={handleGoogleAuth} className="btn btn-success mx-4 text-white">Sign In</a>
+                }
+
             </div>
         </div>
     )
