@@ -94,7 +94,6 @@ const Navbar = () => {
                             <button onClick={handleGithubSignIn} className="btn btn-success mx-4 text-white">Github</button>
                         </div>
                 }
-
             </div>
         </div>
     )
