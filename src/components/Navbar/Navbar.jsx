@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 import auth from '../../Firebase/firebase.init'
 
 const Navbar = () => {
     const [user, setUser] = useState(null)
 
     const provider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
 
     const handleGoogleAuth = () => {
         signInWithPopup(auth, provider)
@@ -27,6 +28,13 @@ const Navbar = () => {
             .catch((error) => {
                 console.log(error);
             })
+    }
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth , githubProvider)
+        .then(result => {
+            setUser(result.user)
+        })
+        .catch(error => console.log(error))
     }
 
     const links =
@@ -70,18 +78,21 @@ const Navbar = () => {
             <div className="navbar-end ">
                 {
                     user &&
-                    <div className='flex items-center gap-5'>
+                    <div className='flex items-center gap-5 ml-4'>
                         <img className='rounded-full h-14' src={user.photoURL} alt="" />
                         <div>
                             <h3>{user.displayName}</h3>
-                            <p>{user.email}</p>
+                            <p>{user?.email}</p>
                         </div>
                     </div>
                 }
                 {
                     user ?
-                        <a onClick={handleSignOut} className="btn btn-accent text-white">Sign Out</a> :
-                        <a onClick={handleGoogleAuth} className="btn btn-success mx-4 text-white">Sign In</a>
+                        <button onClick={handleSignOut} className="btn btn-accent text-white">Sign Out</button> :
+                        <div>
+                            <button onClick={handleGoogleAuth} className="btn btn-success mx-4 text-white">Google</button>
+                            <button onClick={handleGithubSignIn} className="btn btn-success mx-4 text-white">Github</button>
+                        </div>
                 }
 
             </div>
