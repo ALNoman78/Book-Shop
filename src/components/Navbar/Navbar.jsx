@@ -82,7 +82,7 @@ const Navbar = () => {
                         <img className='rounded-full h-14' src={user.photoURL} alt="" />
                         <div>
                             <h3>{user.displayName}</h3>
-                            <p>{user?.email}</p>
+                            <p>{user.email = 'N/A available'}</p>
                         </div>
                     </div>
                 }
